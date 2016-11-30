@@ -1,0 +1,36 @@
+Nota: las rutas y puertos son para mi PC (Windows 10)
+
+CREAR LA BASE DE DATOS
+
+1º Abrir Xampp: localhost/phpmyadmin (localhost:8080/... en mi PC)
+2º Crear una base de datos
+3º Crear un usuario (Pestaña Privilegios)
+	nombre: 	Use el campo de texto	pepito
+	nombre host: 	Local 			localhost
+	Contraseña: 	Use el campo de texto	12341234
+
+Privilegios globales: tick en Seleccionar todo
+click en Continuar
+
+CREAR UN VIRTUALHOST
+
+1º Abrir httpd.conf
+D:/xampp/apache/conf/httpd.conf
+Descomentar:
+Include conf/extra/httpd-vhosts.conf (ya estaba descomentado)
+
+2ºVamos a D:/xampp/apache/conf/extra/httpd-vhosts.conf
+copiamos abajo uno de los bloques <VirtualHost ....> y añadimos nuestro DocumenRoot y SeverName
+<VirtualHost *:8080> //normalmente es :80
+    ServerAdmin webmaster@dummy-host2.example.com
+    DocumentRoot "D:/xampp/htdocs/Biblioteca"
+    ServerName biblioteca.dev
+    ErrorLog "logs/dummy-host2.example.com-error.log"
+    CustomLog "logs/dummy-host2.example.com-access.log" common
+</VirtualHost>
+
+3º Por ultimo entro en C:\Windows\System32\drivers\etc\hosts añado:
+#localhost para mi proyecto Biblioteca Xampp
+127.0.0.1	biblioteca.dev
+
+
